@@ -30,7 +30,7 @@ The user can enter the event, then click the save button for that time block. Th
 
 ## Deployment
 
-[Calendar Project](https://elenagurchinskaia.github.io/calendar-project/)
+[Calendar Project](https://github.com/elenagurchinskaia/weather-dashboard)
 
 ![alt text](./assets/images/05-third-party-apis-homework-demo.gif)
 
