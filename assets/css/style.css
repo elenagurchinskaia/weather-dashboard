@@ -3,3 +3,39 @@
   margin: 0;
   padding: 0;
 }
+
+header {
+  color: #fff;
+}
+
+.search-container {
+  padding-left: 20px;
+}
+
+.display-5 {
+  padding-left: 50%;
+}
+
+.background {
+  background-image: linear-gradient(bottom right, pink, green);
+}
+
+.forecast-box {
+  background-color: grey;
+  color: #fff;
+  margin-left: 14px;
+  height: 200px;
+  width: 118px;
+}
+
+.container-5-day {
+  display: flex;
+  border: black;
+  width: 400px;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+}
