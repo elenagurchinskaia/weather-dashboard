@@ -15,6 +15,8 @@ var APIKey = "759ef34db775cd33f6e32424d8cea697";
 // recent searches -> check localStorage
 // function that displays data on the page
 // search function -> brake into multiple functions
+
+// search function
 function search(city) {
   var queryURL =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -50,7 +52,7 @@ function search(city) {
     });
 }
 
-// current weather function
+// display current weather function
 function currentWeather(data) {
   //access elements from html
   var cityEl = document.getElementsByClassName(".city-title");
@@ -64,28 +66,35 @@ function currentWeather(data) {
   humidEl.textContent = "Humidity" + data.main.humidity;
 }
 
-// forecast weather function
+// display forecast data
 function forecastData(data) {
-  // access elements from html
-  var forecastElement = document.getElementsByClassName(".forecast");
   // clear previous forecast data
-  forecastElement.innerHTML = "";
-  // loop thru the forecast data for teh next 5 days
+  forecast.innerHTML = "";
+  // access elements from html
+  // loop thru the forecast data for the next 5 days
   for (var i = 0; i < data.list.length; i += 8) {
     var forecastItem = data.list[i];
-    var date = forecastItem.dt_txt("MM/dd/yyyy");
+    var date = forecastItem.dt_txt;
     var temperature = forecastItem.main.temp;
     var wind = forecastItem.main.wind;
     var humidity = forecastItem.main.humidity;
     // create div element to display forecast data
     var forecastItemElement = document.createElement("div");
+    forecastItemElement.classList.add(
+      "col-2",
+      "bg-dark",
+      "text-white",
+      "flex-row",
+      "justify-space-between"
+    );
+    forecastItemElement.InnerHTML = "5-Day Forecast" + "<br/>";
     forecastItemElement.innerHTML = "<strong>Date:</strong> " + date + "<br/>";
     forecastItemElement.innerHTML =
       "<strong>Temp:</strong> " + temperature + "<br/>";
     forecastItemElement.innerHTML = "<strong>Wind:</strong> " + wind + "<br/>";
-    forecastItemElement.innerHTML =
-      "<strong>Humidity:</strong> " + humidity + "<br/>";
-    forecastElement.appendChild(forecastItemElement);
+    forecastItemElement.innerHTML = "<strong>Humidity:</strong> " + humidity;
+
+    forecast.appendChild(forecastItemElement);
   }
 }
 
@@ -125,15 +134,27 @@ function forecastData(data) {
 // > take an input
 // call function that saves recent searches
 
-storeSearch();
 //TODO:
-function storeSearch() {
-  userInput.textContent = "";
-  for (var i = 0; i < 7; i++) {
-    searchHistory = document.createElement("button");
-    displayData.userInput;
-    console.log(userInput);
-  }
+
+// the input value appears as a secondary button below the search button
+// only 7 buttons are displayed with no repetition of values
+storeSearch();
+// store recent searches
+function storeSearch(city) {
+  var searchBtn = document.createElement("button");
+  searchBtn.textContent = city;
+  searchBtn.classList.add("secondary-btn", "flex-row", "align-center");
+
+  searchHistory.appendChild(searchBtn);
+
+  // var recentSearches = JSON.parse(localStorage.getItem("resentSearches"));
+  // recentSearches.push(city);
+  // localStorage.setItem("resentSearches", JSON.stringify(recentSearches));
+  // userInput.textContent = "";
+  // for (var i = 0; i < 7; i++) {
+  //   searchHistory = document.createElement("button");
+  //   // displayData(city, currentWeather, forecastData);
+  //   console.log(userInput);
   // update/call recent searches function
 }
 
@@ -163,19 +184,22 @@ function storeSearch() {
 // }
 displayData();
 //TODO:
-function displayData() {
+function displayData(event) {
   // display data to page dependant on HTML
   // multiple variables
   userInput.textContent = "";
   for (var i = 0; i < 5; i++) {
-    searchHistory = document.createElement("button");
-    searchHistory.classList = "flex-row align-center";
+    // displaySearchData(currentWeather, forecastData);
+    console.log(userInput);
+    // searchHistory = document.createElement("button");
+    // searchHistory.classList = "flex-row align-center";
 
     // searchHistory.textContent = data[i];
   }
 }
 
 //TODO:
+
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
   // console.log(event.target);
@@ -189,8 +213,12 @@ searchForm.addEventListener("submit", function (event) {
 // }
 
 searchHistory.addEventListener("click", function (event) {
-  event.preventDefault();
+  // event.preventDefault();
   search();
+});
+
+currentWeatherEl.addEventListener("click", function (event) {
+  display(currentWeather);
 });
 // event listener for recent searches ("click", function() {
 // create var for search term (text on button) - event.target
