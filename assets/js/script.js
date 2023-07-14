@@ -151,21 +151,22 @@ function forecastData(data) {
 storeSearch();
 // store recent searches
 function storeSearch(city) {
-  var searchHistoryItem = searchHistory.querySelectorAll("button");
-  var isRepeated = Array.from(searchHistoryItem).some(function (item) {
+  var searchHistoryItems = searchHistory.querySelectorAll(".secondary-button");
+  var isRepeated = Array.from(searchHistoryItems).some(function (item) {
     return item.textContent.toLowerCase() === city.toLowerCase();
   });
-  // exit the function if teh city is already present
+  // exit the function if the city is already present
   if (isRepeated) {
     return;
   }
-  if (searchHistoryItem.length >= 7) {
+  if (searchHistoryItems.length >= 7) {
     // remove the oldest child
-    searchHistory.removeChild(searchHistoryItem[0]);
+    searchHistory.removeChild(searchHistoryItems[0]);
   }
 
   var searchBtn = document.createElement("button");
   searchBtn.classList.add("secondary-btn", "flex-row", "align-center");
+  searchBtn.textContent = city;
 
   searchHistory.appendChild(searchBtn);
 
@@ -216,32 +217,26 @@ function displayData(event) {
   }
 }
 
-//TODO:
-
+// event listener for form submission
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
   // console.log(event.target);
   var city = userInput.value.trim();
-  search(city);
+  if (city) {
+    search(city);
+    storeSearch(city);
+    userInput.value = "";
+  }
 });
 
-// event listener for search button ("click", function(){
-// var search =
-// call function - search(var)
-// }
-
+// event listener for clicking on search history
 searchHistory.addEventListener("click", function (event) {
-  // event.preventDefault();
-  search();
+  var clickedButton = event.target.closest("button");
+  if (clickedButton) {
+    var city = clickedButton.textContent;
+    search(city);
+  }
 });
-
-currentWeatherEl.addEventListener("click", function (event) {
-  display(currentWeather);
-});
-// event listener for recent searches ("click", function() {
-// create var for search term (text on button) - event.target
-// call search function
-// }
 
 // var today = dayjs();
 // $(".current-weather").text(today.format("MMM D, YYYY"));
