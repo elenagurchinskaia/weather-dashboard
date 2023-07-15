@@ -33,7 +33,7 @@ function search(city) {
     .then(function (data) {
       currentWeather(data);
       console.log(data);
-      var { lat, lon } = data.coord;
+      var { lat, lon } = data.coord; // credit Ben Martin
       console.log(lon, lat);
       var forecastURL =
         "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -91,12 +91,18 @@ function currentWeather(data) {
 function forecastData(data) {
   // clear previous forecast data
   forecastElement.innerHTML = "";
-  // access elements from html
+
+  // create title element for the forecast
+  var titleEl = document.createElement("h3");
+  titleEl.classList.add("five-day-forecast");
+  titleEl.textContent = "5 - Day Forecast: ";
+
+  // prepend the title element to the forecast container
+  forecastElement.insertBefore(titleEl, forecastElement.firstChild);
+
   // loop thru the forecast data for the next 5 days
   for (var i = 0; i < 5; i++) {
     var forecastItem = data.list[i * 8];
-    var titleEl = document.createElement("h3");
-    titleEl.textContent = "5 - Day Forecast:";
     var dateEl = document.createElement("p");
     dateEl.textContent = "Date: " + forecastItem.dt_txt.split(" ")[0];
     var iconEl = document.createElement("img");
