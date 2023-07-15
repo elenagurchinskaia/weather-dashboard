@@ -58,14 +58,20 @@ function currentWeather(data) {
   // Clear previous data
   currentWeatherEl.innerHTML = "";
 
-  var cityEl = document.createElement("h2");
+  var weatherContainer = document.createElement("div");
+  weatherContainer.classList.add("weather-container");
+
+  var cityEl = document.createElement("h1");
   cityEl.textContent = data.name;
+  cityEl.classList.add("city-name");
 
   var dateEl = document.createElement("p");
   dateEl.textContent = getCurrentDate();
+  dateEl.classList.add("weather-date");
 
   var iconEl = document.createElement("img");
   iconEl.src = getWeatherIconURL(data.weather[0].icon);
+  iconEl.classList.add("weather-icon");
 
   var temperatureEl = document.createElement("p");
   var temperatureInCelsius = data.main.temp - 273.15;
@@ -79,12 +85,15 @@ function currentWeather(data) {
   var windSpeedEl = document.createElement("p");
   windSpeedEl.textContent = "Wind Speed: " + data.wind.speed + " m/s";
 
+  // currentWeatherEl.appendChild(weatherContainer);
   currentWeatherEl.appendChild(cityEl);
   currentWeatherEl.appendChild(dateEl);
   currentWeatherEl.appendChild(iconEl);
   currentWeatherEl.appendChild(temperatureEl);
   currentWeatherEl.appendChild(humidityEl);
   currentWeatherEl.appendChild(windSpeedEl);
+
+  currentWeatherEl.appendChild(weatherContainer);
 }
 
 // display forecast data
@@ -93,7 +102,7 @@ function forecastData(data) {
   forecastElement.innerHTML = "";
 
   // create title element for the forecast
-  var titleEl = document.createElement("h3");
+  var titleEl = document.createElement("h5");
   titleEl.classList.add("five-day-forecast");
   titleEl.textContent = "5 - Day Forecast: ";
 
@@ -153,7 +162,7 @@ function getWeatherIconURL(iconCode) {
 
 // the input value appears as a secondary button below the search button
 // only 7 buttons are displayed with no repetition of values
-storeSearch();
+
 // store recent searches
 function storeSearch(city) {
   var searchHistoryItems = searchHistory.querySelectorAll(".secondary-button");
@@ -175,40 +184,16 @@ function storeSearch(city) {
   searchBtn.textContent = city;
 
   searchHistory.appendChild(searchBtn);
-
-  // var recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
-  // recentSearches.push(city);
-  // localStorage.setItem("resentSearches", JSON.stringify(recentSearches));
-  // userInput.textContent = "";
-  //   searchHistory = document.createElement("button");
 }
 
-//TODO:
-// function coordinates() {
-//   fetch(queryURL)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//     });
-//   // > fetch request for coordinates with API
-//   // .then - convert to Json format
-//   // .then - receive and extract coordinates data
-//   // call the weather function()
-//   weather();
-// }
+// var recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
+// recentSearches.push(city);
+// localStorage.setItem("resentSearches", JSON.stringify(recentSearches));
+// userInput.textContent = "";
+//   searchHistory = document.createElement("button");
 
-//TODO:
-// function forecastData() {
-//   // use coordinates from first fetch to make another fetch weather data from API
-//   // convert to Json format
-//   // extract tempreture, wind and humidity + 5 day forecast from object data
-//   // call displayData function()
-//   displayData();
-// }
 displayData();
-//TODO:
+
 function displayData(event) {
   // display data to page dependant on HTML
   // multiple variables
