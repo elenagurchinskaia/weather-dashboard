@@ -12,7 +12,6 @@ var searchForm = document.querySelector("#search-form");
 
 var APIKey = "759ef34db775cd33f6e32424d8cea697";
 
-// TODO:function
 // recent searches -> check localStorage
 // function that displays data on the page
 // search function -> brake into multiple functions
@@ -57,7 +56,7 @@ function search(city) {
 function currentWeather(data) {
   // Clear previous data
   currentWeatherEl.innerHTML = "";
-
+  // create a list of classes to style the content in CSS
   var weatherContainer = document.createElement("div");
   weatherContainer.classList.add("weather-container");
 
@@ -85,7 +84,6 @@ function currentWeather(data) {
   var windSpeedEl = document.createElement("p");
   windSpeedEl.textContent = "Wind Speed: " + data.wind.speed + " m/s";
 
-  // currentWeatherEl.appendChild(weatherContainer);
   currentWeatherEl.appendChild(cityEl);
   currentWeatherEl.appendChild(dateEl);
   currentWeatherEl.appendChild(iconEl);
@@ -149,20 +147,13 @@ function getCurrentDate() {
   });
 }
 
+// function to link icons from open weather
 function getWeatherIconURL(iconCode) {
   return "http://openweathermap.org/img/wn/" + iconCode + ".png";
 }
 
-// Loop thru the current forecast data and display the retreived data
-
-// > take an input
-// call function that saves recent searches
-
-//TODO:
-
 // the input value appears as a secondary button below the search button
 // only 7 buttons are displayed with no repetition of values
-
 // store recent searches
 function storeSearch(city) {
   var searchHistoryItems = searchHistory.querySelectorAll(".secondary-button");
@@ -186,28 +177,6 @@ function storeSearch(city) {
   searchHistory.appendChild(searchBtn);
 }
 
-// var recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
-// recentSearches.push(city);
-// localStorage.setItem("resentSearches", JSON.stringify(recentSearches));
-// userInput.textContent = "";
-//   searchHistory = document.createElement("button");
-
-displayData();
-
-function displayData(event) {
-  // display data to page dependant on HTML
-  // multiple variables
-  userInput.textContent = "";
-  for (var i = 0; i < 5; i++) {
-    // displaySearchData(currentWeather, forecastData);
-    console.log(userInput);
-    // searchHistory = document.createElement("button");
-    // searchHistory.classList = "flex-row align-center";
-
-    // searchHistory.textContent = data[i];
-  }
-}
-
 // event listener for form submission
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -228,6 +197,3 @@ searchHistory.addEventListener("click", function (event) {
     search(city);
   }
 });
-
-// var today = dayjs();
-// $(".current-weather").text(today.format("MMM D, YYYY"));

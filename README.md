@@ -2,35 +2,33 @@
 
 ## Description
 
-The goal for this project was to create a daily planner that would
-be then used for the daily schedule purposes.
-When the user opens the planner, the currecnt day is displayed at the top
-of the calendar.
-Then the user is presented with the time blocks for standard business hours
-of 9 am to 5 pm.
-Each time block is color-coded to indicate whether it is in the past, present, or future.
-The user can enter the event, then click the save button for that time block. The event will be saved in the local storage. When the user refresh the page the event persist.
+The goal for this project was to create a weather dashboard that would display the current and a five-day forecast weather for the selected city. The name of the city, date, temperature, wind, humidity, and an icon that represents the weather condition are displayed.
+
+The city that the user has selected is displayed on the right hand side, and these search results are saved under the search button, where it stucked under each other. When it exceeds seven searches, the oldest item is removed and a new one is saved. When the user clicks on one of the previously selected cities, it will replace the current results.
 
 ## Technology Used
 
 [JavaScript](!--https://developer.mozilla.org/en-US/docs/Web/JavaScript--)
-[Day.js](!--https://day.js.org--)
 [HTML](!--https://developer.mozilla.org/en-US/docs/Web/HTML--)
 [CSS](!--https://developer.mozilla.org/en-US/docs/Web/CSS--)
 [Git](!--https://git-scm.com--)
 [Bootstrap](!--https://getbootstrap.com/docs/5.3/getting-started/introduction--)
-[GoogleFonts](!--https://fonts.google.com--)
 
 ## Learning points
 
-- this
-- day.js
-- Bootstrap
-- jQuery
+- fetch
+- classList.add
+- temperature conversion
+- toFixed()
+- getCurrentDate
+- toLocaleDateString
+- Get icon URL
+- innerHTML
+- insertBefore
 
 ## Deployment
 
-[Calendar Project](https://github.com/elenagurchinskaia/weather-dashboard)
+[Weather Dashboard](https://elenagurchinskaia.github.io/weather-dashboard/)
 
 ![alt text](./assets/images/05-third-party-apis-homework-demo.gif)
 
