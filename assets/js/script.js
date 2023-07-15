@@ -153,7 +153,6 @@ function getWeatherIconURL(iconCode) {
 }
 
 // the input value appears as a secondary button below the search button
-// only 7 buttons are displayed with no repetition of values
 // store recent searches
 function storeSearch(city) {
   var searchHistoryItems = searchHistory.querySelectorAll(".secondary-button");

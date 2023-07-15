@@ -4,7 +4,7 @@
 
 The goal for this project was to create a weather dashboard that would display the current and a five-day forecast weather for the selected city. The name of the city, date, temperature, wind, humidity, and an icon that represents the weather condition are displayed.
 
-The city that the user has selected is displayed on the right hand side, and these search results are saved under the search button, where it stucked under each other. When it exceeds seven searches, the oldest item is removed and a new one is saved. When the user clicks on one of the previously selected cities, it will replace the current results.
+The city that the user has selected is displayed on the right hand side, and these search results are saved under the search button, where it stucked under each other. When the user clicks on one of the previously selected cities, it will replace the current results.
 
 ## Technology Used
 
@@ -30,7 +30,7 @@ The city that the user has selected is displayed on the right hand side, and the
 
 [Weather Dashboard](https://elenagurchinskaia.github.io/weather-dashboard/)
 
-![alt text](./assets/images/05-third-party-apis-homework-demo.gif)
+![alt text](./assets/images/weather-dashboard.png)
 
 ## Author
 
