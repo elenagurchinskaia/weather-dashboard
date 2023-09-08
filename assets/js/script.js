@@ -19,7 +19,7 @@ var APIKey = "759ef34db775cd33f6e32424d8cea697";
 // search function
 function search(city) {
   var queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=" +
     APIKey;
@@ -27,6 +27,9 @@ function search(city) {
 
   fetch(queryURL)
     .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
       return response.json();
     })
     .then(function (data) {

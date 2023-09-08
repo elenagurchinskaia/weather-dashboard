@@ -39,6 +39,12 @@ header {
 
 /* five-day-forecast styling */
 
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   body {
     font-size: 14px;
