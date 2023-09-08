@@ -152,7 +152,7 @@ function getCurrentDate() {
 
 // function to link icons from open weather
 function getWeatherIconURL(iconCode) {
-  return "http://openweathermap.org/img/wn/" + iconCode + ".png";
+  return "https://openweathermap.org/img/wn/" + iconCode + ".png";
 }
 
 // the input value appears as a secondary button below the search button
