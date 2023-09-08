@@ -44,14 +44,19 @@ function search(city) {
         lon +
         "&appid=" +
         APIKey;
-      fetch(forecastURL)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          forecastData(data);
-          console.log(data);
-        });
+      return fetch(forecastURL);
+    })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      forecastData(data);
+    })
+    .catch(function (error) {
+      console.error("Fetch error:", error);
     });
 }
 
