@@ -104,36 +104,36 @@ function currentWeather(data) {
 
 // display forecast data
 function forecastData(data) {
-  // clear previous forecast data
   forecastElement.innerHTML = "";
 
-  // create title element for the forecast
   var titleEl = document.createElement("h5");
   titleEl.classList.add("five-day-forecast");
-  titleEl.textContent = "5 - Day Forecast: ";
+  titleEl.textContent = "5-Day Forecast: ";
+  forecastElement.appendChild(titleEl);
 
-  // prepend the title element to the forecast container
-  forecastElement.insertBefore(titleEl, forecastElement.firstChild);
-
-  // loop thru the forecast data for the next 5 days
   for (var i = 0; i < 5; i++) {
     var forecastItem = data.list[i * 8];
+    var forecastItemContainer = document.createElement("div");
+    forecastItemContainer.classList.add("forecast-item", "col-md-2", "mb-3");
+
     var dateEl = document.createElement("p");
-    dateEl.textContent = "Date: " + forecastItem.dt_txt.split(" ")[0];
+    dateEl.textContent = forecastItem.dt_txt.split(" ")[0];
+
     var iconEl = document.createElement("img");
     iconEl.src = getWeatherIconURL(forecastItem.weather[0].icon);
+
     var temperatureEl = document.createElement("p");
     var temperatureInCelsius = forecastItem.main.temp - 273.15;
     var temperatureInFahrenheit = (temperatureInCelsius * 9) / 5 + 32;
     temperatureEl.textContent =
       "Temperature: " + temperatureInFahrenheit.toFixed(2) + "°F";
+
     var humidEl = document.createElement("p");
     humidEl.textContent = "Humidity: " + forecastItem.main.humidity + "%";
+
     var windEl = document.createElement("p");
     windEl.textContent = "Wind Speed: " + forecastItem.wind.speed + " m/s";
 
-    var forecastItemContainer = document.createElement("div");
-    forecastItemContainer.classList.add("forecast-item");
     forecastItemContainer.append(
       dateEl,
       iconEl,
