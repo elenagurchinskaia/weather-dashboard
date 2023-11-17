@@ -162,25 +162,22 @@ function getWeatherIconURL(iconCode) {
 
 // the input value appears as a secondary button below the search button
 // store recent searches
+// function to display search history
 function storeSearch(city) {
-  var searchHistoryItems = searchHistory.querySelectorAll(".secondary-button");
+  var searchHistoryItems = searchHistory.querySelectorAll(".btn-secondary");
   var isRepeated = Array.from(searchHistoryItems).some(function (item) {
     return item.textContent.toLowerCase() === city.toLowerCase();
   });
-  // exit the function if the city is already present
   if (isRepeated) {
     return;
   }
   if (searchHistoryItems.length >= 7) {
-    // remove the oldest child
     searchHistory.removeChild(searchHistoryItems[0]);
   }
 
   var searchBtn = document.createElement("button");
-  searchBtn.classList.add("btn", "btn-secondary", "col-12");
-
+  searchBtn.classList.add("btn", "btn-secondary", "col-12", "mb-2"); // Add margin-bottom between buttons
   searchBtn.textContent = city;
-
   searchHistory.appendChild(searchBtn);
 }
 
